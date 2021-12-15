@@ -74,13 +74,127 @@ shinyUI(bs4DashPage(
                                         step = 0.01
                                     )
                             )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'ip',
+                                        label = 'IP',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'densityo',
+                                        label = 'Den. o',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'phitr',
+                                        label = 'Phi_{TR}',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'phitp',
+                                        label = 'Phi_{TP}',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'profemp',
+                                        label = 'Prof. empacador',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'twh',
+                                        label = 'T_{wh}',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'tfondo',
+                                        label = 'T_{but}',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'pvalvula',
+                                        label = 'AP_{val. op.}',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'ttaller',
+                                        label = 'T_{taller}',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'rgan',
+                                        label = 'R_{GAN}',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'rgat',
+                                        label = 'R_{GAT}',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'pws',
+                                        label = 'Pws',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        shiny::actionButton(
+                            inputId = 'start',
+                            label = 'Calcular',
+                            icon = shiny::icon('calculator')
                         )
                     )
                 ),
                 column( 6,
                     box(
                         title = 'Tablas de calculo',
-                        width = 12
+                        width = 12,
+                        DT::dataTableOutput('cal')
                     )
                 )
             )
