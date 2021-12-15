@@ -1,33 +1,89 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+library(shinyalert)
+library(bs4Dash)
 library(shiny)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
+source('initial_ui.R')
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
-        )
+shinyUI(bs4DashPage(
+    header = dashboardHeader(
+        title = 'Programa Final',
+        titleWidth = NULL
+    ),
+    sidebar = bs4DashSidebar(
+        disable = TRUE
+    ),
+    body = bs4DashBody(
+        bs4Card(
+            title = 'Calculos iniciales',
+            width = 12,
+            fluidRow(
+                column( 6,
+                    box(
+                        title = 'Variables de entrada',
+                        width = 12,
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'qo',
+                                        label = 'q0',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'pdisp',
+                                        label = '$$P_{disp}$$',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'psd',
+                                        label = 'Psd',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'pwh',
+                                        label = 'P_{wh}',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        ),
+                        fluidRow(
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'gammag',
+                                        label = 'gamma_{ging}',
+                                        value = NULL,
+                                        step = 0.01
+                                    ) 
+                            ),
+                            column( 6,
+                                    shiny::numericInput(
+                                        inputId = 'density',
+                                        label = 'Den. de Fluid.',
+                                        value = NULL,
+                                        step = 0.01
+                                    )
+                            )
+                        )
+                    )
+                ),
+                column( 6,
+                    box(
+                        title = 'Tablas de calculo',
+                        width = 12
+                    )
+                )
+            )
+        )        
     )
 ))
