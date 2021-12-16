@@ -19,6 +19,7 @@ shinyServer(function(input, output) {
                 c(qo,pdisp,psd,pwh,gammag,dens,ip,densityo,phitr,phitp,profemp,twh,tfondo,
                  pvalvula,ttaller,rgan, rgat, pws)
         ))
+            
             var$init <- TRUE 
         
         print(var$init)
